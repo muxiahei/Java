@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class InsertSort {
     public static void main(String[] args) {
         int[] array = new int[]{3,1,2,4,5,-4};
-
         for(int i = 1; i < array.length; i++) {
             int temp = array[i];
             int j;
