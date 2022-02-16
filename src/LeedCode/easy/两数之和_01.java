@@ -1,4 +1,4 @@
-package LeedCode;
+package LeedCode.easy;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,12 +11,22 @@ import java.util.Map;
  *
  * 你可以按任意顺序返回答案。
  *
+ * 输入：nums = [2,7,11,15], target = 9
+ * 输出：[0,1]
+ * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+ *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/two-sum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class TwoSum {
+public class 两数之和_01 {
 
+    /**
+     * 暴力破解法
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int[] solution1(int[] nums, int target) {
         for(int i = 0; i < nums.length; i++) {
             for(int j = i; j < nums.length; j++) {
@@ -28,25 +38,29 @@ public class TwoSum {
         return new int[]{0};
     }
 
+    /**
+     * 利用map来
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int[] solution2(int[] nums, int target) {
         Map<Integer,Integer> map = new HashMap<>();
         for(int i = 0; i < nums.length; i++) {
+            //要寻找的数字
             int num = target - nums[i];
             if(map.containsKey(num)) {
                 return new int[]{map.get(num),i};
             }
-
+            //后添加数字可以避免查询到数字本身
             map.put(nums[i],i);
         }
-
         return new int[]{0};
-
     }
 
     public static void main(String[] args) {
         final int[] ints = solution2(new int[]{2, 1, 6, 7, 9}, 16);
         System.out.println(Arrays.toString(ints));
-
     }
 
 }
